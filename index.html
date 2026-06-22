@@ -1,0 +1,204 @@
+﻿<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Le Api di Sephora | Miele artigianale della Garfagnana</title>
+    <meta
+      name="description"
+      content="Le Api di Sephora: miele italiano artigianale della Garfagnana, nel rispetto del territorio."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="icon" type="image/png" href="logo-sephora.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html#home" aria-label="Torna alla home - Le Api di Sephora" title="Torna alla home">
+        <img src="logo-mark.png" alt="">
+        <span>Le Api di Sephora</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigazione principale">
+        <a href="shop.html">Shop</a>
+        <a href="#storia">Storia</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+      <a class="header-action" href="shop.html#carrello">Carrello (<span id="cartCount">0</span>)</a>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <h1 id="hero-title" class="sr-only">Le Api di Sephora</h1>
+        <img
+          src="home-sephora-wide.png"
+          alt="Selezione artigianale Le Api di Sephora dalla Garfagnana"
+        >
+      </section>
+
+      <section class="intro-band" aria-label="Valori">
+        <div class="intro-item">
+          <span class="intro-icon">N</span>
+          <strong>Naturale</strong>
+          <p>Miele raccolto rispettando i ritmi delle api e del territorio.</p>
+        </div>
+        <div class="intro-item">
+          <span class="intro-icon">G</span>
+          <strong>Di montagna</strong>
+          <p>Profumi e fioriture della Garfagnana in ogni vasetto.</p>
+        </div>
+        <div class="intro-item">
+          <span class="intro-icon">P</span>
+          <strong>Con passione</strong>
+          <p>Una lavorazione artigianale, curata in piccoli lotti.</p>
+        </div>
+      </section>
+
+      <section class="home-shop-teaser" aria-labelledby="home-shop-title">
+        <div class="home-shop-copy">
+          <div class="home-shop-intro">
+            <img class="bee-accent" src="bee-accent.png" alt="" aria-hidden="true">
+            <p class="eyebrow">Miele artigianale italiano</p>
+          </div>
+          <h2 id="home-shop-title">Dalle nostre api alla tua tavola, con rispetto per il territorio.</h2>
+          <p>
+            Ogni vasetto nasce da una lavorazione attenta, legata ai ritmi della natura
+            e alle fioriture della Garfagnana.
+          </p>
+          <p>
+            Scegli il miele, il formato e prepara il tuo ordine nella bottega online.
+          </p>
+          <div class="teaser-actions">
+            <a class="primary-link" href="shop.html">Visita lo shop</a>
+            <a class="secondary-link" href="#storia">Scopri la storia</a>
+          </div>
+        </div>
+        <figure class="home-shop-image">
+          <img src="home-sephora-wide.png" alt="Selezione di mieli Le Api di Sephora">
+        </figure>
+      </section>
+
+      <section class="story-band" id="storia">
+        <div class="story-content">
+          <p class="eyebrow">Dal lavoro delle api</p>
+          <h2>Un miele che nasce vicino alla montagna</h2>
+          <div class="story-copy">
+            <p>
+              Le Api di Sephora porta in tavola miele artigianale della Garfagnana,
+              lavorato con attenzione per conservare profumi, consistenza e carattere naturale.
+            </p>
+            <ul class="story-list">
+              <li>Stagionalita e fioriture del territorio.</li>
+              <li>Piccoli lotti e attenzione alla lavorazione.</li>
+              <li>Una bottega semplice, diretta e trasparente.</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="story-media">
+          <!-- Immagine editoriale temporanea: sostituire con una foto reale dell'apiario prima del lancio. -->
+          <img src="apiary-story-placeholder.png" alt="Telaio di miele appena estratto dall'apiario">
+        </figure>
+      </section>
+
+      <section class="order-steps" aria-labelledby="order-steps-title">
+        <div class="section-intro">
+          <p class="eyebrow">Ordina con calma</p>
+          <h2 id="order-steps-title">Una bottega online fatta per scegliere bene.</h2>
+        </div>
+        <ol class="process-grid">
+          <li>
+            <span>01</span>
+            <h3>Esplora</h3>
+            <p>Entra nella bottega e scegli i prodotti che ti interessano.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <h3>Prepara l'ordine</h3>
+            <p>Aggiungi la selezione al carrello e completa la richiesta nel checkout.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <h3>Ricevi conferma</h3>
+            <p>Disponibilita, consegna e costo finale vengono confermati prima dell'ordine.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="faq-section" aria-labelledby="faq-title">
+        <div class="section-intro">
+          <p class="eyebrow">Domande frequenti</p>
+          <h2 id="faq-title">Tutto chiaro, prima di ordinare.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Come funziona la richiesta d'ordine?</summary>
+            <p>Componi il carrello nella bottega, poi completa il checkout con i tuoi dati e la preferenza di consegna. Ti contatteremo per confermare disponibilita e dettagli finali.</p>
+          </details>
+          <details>
+            <summary>Posso chiedere informazioni prima di acquistare?</summary>
+            <p>Certo. Puoi usare il modulo contatti per chiedere informazioni su disponibilita, quantitativi o modalita di consegna.</p>
+          </details>
+          <details>
+            <summary>Quando sapro il costo finale?</summary>
+            <p>Il riepilogo del carrello mostra la selezione scelta. Eventuali costi aggiuntivi vengono comunicati e confermati prima di rendere l'ordine definitivo.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contatti">
+        <div class="contact-copy">
+          <p class="eyebrow">Ordini e informazioni</p>
+          <h2>Porta il miele della Garfagnana sulla tua tavola</h2>
+          <p>
+            Scrivici per confermare il tuo ordine, indicare consegna o ritiro e
+            ricevere il totale finale con eventuale spedizione.
+          </p>
+        </div>
+        <form class="contact-form" action="mailto:info@leapidisephora.it" method="post" enctype="text/plain">
+          <label>
+            Nome
+            <input type="text" name="nome" autocomplete="name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>
+            Messaggio
+            <textarea id="orderMessage" name="messaggio" rows="6" required></textarea>
+          </label>
+          <button type="submit">Invia richiesta</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img src="logo-sephora.png" alt="Le Api di Sephora">
+        <p>Miele artigianale della Garfagnana</p>
+      </div>
+      <div class="footer-actions">
+        <nav class="footer-nav" aria-label="Navigazione a fondo pagina">
+          <a href="shop.html">Shop</a>
+          <a href="#storia">Storia</a>
+          <a href="#contatti">Contatti</a>
+        </nav>
+        <div class="footer-socials" aria-label="Social">
+          <a class="social-link" href="https://www.instagram.com/leapidisephora/" target="_blank" rel="noopener noreferrer" aria-label="Segui Le Api di Sephora su Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js" defer></script>
+  </body>
+</html>
+

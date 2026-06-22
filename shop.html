@@ -1,0 +1,403 @@
+﻿<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop | Le Api di Sephora</title>
+    <meta
+      name="description"
+      content="Bottega online Le Api di Sephora: scopri la selezione artigianale della Garfagnana."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="icon" type="image/png" href="logo-sephora.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html#home" aria-label="Torna alla home - Le Api di Sephora" title="Torna alla home">
+        <img src="logo-mark.png" alt="">
+        <span>Le Api di Sephora</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigazione principale">
+        <a href="shop.html" aria-current="page">Shop</a>
+        <a href="index.html#storia">Storia</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+      <a class="header-action" href="#carrello">Carrello (<span id="cartCount">0</span>)</a>
+    </header>
+
+    <main>
+      <section class="shop-section" id="shop">
+        <div class="shop-layout">
+          <aside class="catalog-sidebar" aria-label="Strumenti shop">
+            <div class="shop-search">
+              <h2>Cerchi qualcosa?</h2>
+              <label class="sr-only" for="productSearch">Cerca prodotto</label>
+              <input id="productSearch" type="search" placeholder="Cerca" autocomplete="off">
+            </div>
+
+            <div class="shop-categories">
+              <h2>Prodotti della bottega</h2>
+              <button type="button" data-filter-category="all" class="is-active">Tutti i prodotti</button>
+              <button type="button" data-filter-category="Miele">Miele</button>
+              <button type="button" data-filter-category="Miele in favo">Miele in favo</button>
+              <button type="button" data-filter-category="Propoli">Propoli</button>
+              <button type="button" data-filter-category="Pappa reale">Pappa reale</button>
+              <button type="button" data-filter-category="Polline">Polline</button>
+            </div>
+
+            <aside class="cart-panel" id="carrello" aria-labelledby="cart-title">
+              <div class="cart-heading">
+                <p class="eyebrow">Il tuo ordine</p>
+                <h2 id="cart-title">Carrello</h2>
+              </div>
+              <div class="cart-empty" id="cartEmpty">Nessun prodotto nel carrello.</div>
+              <div class="cart-list" id="cartList" aria-live="polite"></div>
+              <div class="cart-total">
+                <span>Totale</span>
+                <strong id="cartTotal">EUR 0,00</strong>
+              </div>
+              <a class="checkout-button disabled" id="checkoutLink" href="checkout.html" aria-disabled="true">Vai al checkout</a>
+              <button class="copy-order-button" id="copyOrderButton" type="button">Copia ordine</button>
+              <button class="clear-cart-button" id="clearCartButton" type="button">Svuota carrello</button>
+              <p class="cart-status" id="cartStatus" aria-live="polite"></p>
+            </aside>
+          </aside>
+
+          <div class="shop-main">
+            <div class="shop-toolbar">
+              <button class="filter-button" type="button">Filtro</button>
+              <p id="resultCount">Visualizzazione di 9 risultati</p>
+              <label class="sort-label">
+                <span class="sr-only">Ordinamento</span>
+                <select id="sortProducts">
+                  <option value="default">Ordinamento predefinito</option>
+                  <option value="price-asc">Prezzo crescente</option>
+                  <option value="price-desc">Prezzo decrescente</option>
+                  <option value="name-asc">Nome prodotto</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="product-grid" aria-label="Prodotti acquistabili">
+              <!-- Prodotti dimostrativi: sostituire immagini, formati e prezzi con i dati definitivi prima del lancio. -->
+              <article class="product-card featured" data-product="Miele di Castagno" data-category="Miele" data-price-min="7.00" data-price-250="7.00" data-price-500="12.50">
+                <figure class="product-media" style="--focus: 18%;">
+                  <img src="home-sephora-wide.png" alt="Miele di Castagno">
+                </figure>
+                <div class="product-info">
+                  <p class="product-kicker">Intenso</p>
+                  <h3>Miele di Castagno</h3>
+                  <p>Aromatico, ambrato e persistente. Ideale con formaggi stagionati e pane rustico.</p>
+                  <div class="price-row">
+                    <strong data-price-display>EUR 7,00</strong>
+                    <span>da 250 g</span>
+                  </div>
+                  <label class="select-label">
+                    Formato
+                    <select data-size>
+                      <option value="250">250 g</option>
+                      <option value="500">500 g</option>
+                    </select>
+                  </label>
+                  <div class="buy-row">
+                    <label>
+                      Qta
+                      <input data-qty type="number" min="1" max="24" value="1">
+                    </label>
+                    <button type="button" data-add>Aggiungi</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product="Miele di Acacia" data-category="Miele" data-price-min="6.50" data-price-250="6.50" data-price-500="11.50">
+                <figure class="product-media" style="--focus: 38%;">
+                  <img src="home-sephora-wide.png" alt="Miele di Acacia">
+                </figure>
+                <div class="product-info">
+                  <p class="product-kicker">Delicato</p>
+                  <h3>Miele di Acacia</h3>
+                  <p>Chiaro, fine e floreale. Perfetto con yogurt, formaggi freschi e tisane.</p>
+                  <div class="price-row">
+                    <strong data-price-display>EUR 6,50</strong>
+                    <span>da 250 g</span>
+                  </div>
+                  <label class="select-label">
+                    Formato
+                    <select data-size>
+                      <option value="250">250 g</option>
+                      <option value="500">500 g</option>
+                    </select>
+                  </label>
+                  <div class="buy-row">
+                    <label>
+                      Qta
+                      <input data-qty type="number" min="1" max="24" value="1">
+                    </label>
+                    <button type="button" data-add>Aggiungi</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product="Miele Millefiori" data-category="Miele" data-price-min="6.00" data-price-250="6.00" data-price-500="10.50">
+                <figure class="product-media" style="--focus: 55%;">
+                  <img src="home-sephora-wide.png" alt="Miele Millefiori">
+                </figure>
+                <div class="product-info">
+                  <p class="product-kicker">Profumato</p>
+                  <h3>Miele Millefiori</h3>
+                  <p>Equilibrato e solare, racconta la varieta delle fioriture di stagione.</p>
+                  <div class="price-row">
+                    <strong data-price-display>EUR 6,00</strong>
+                    <span>da 250 g</span>
+                  </div>
+                  <label class="select-label">
+                    Formato
+                    <select data-size>
+                      <option value="250">250 g</option>
+                      <option value="500">500 g</option>
+                    </select>
+                  </label>
+                  <div class="buy-row">
+                    <label>
+                      Qta
+                      <input data-qty type="number" min="1" max="24" value="1">
+                    </label>
+                    <button type="button" data-add>Aggiungi</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product="Propoli" data-category="Propoli" data-price-min="5.50" data-price-50="5.50" data-price-100="9.00">
+                <figure class="product-media" style="--focus: 72%;">
+                  <img src="home-sephora-wide.png" alt="Propoli">
+                </figure>
+                <div class="product-info">
+                  <p class="product-kicker">Balsamica</p>
+                  <h3>Propoli</h3>
+                  <p>Prodotto intenso e aromatico, perfetto per completare la linea artigianale.</p>
+                  <div class="price-row">
+                    <strong data-price-display>EUR 5,50</strong>
+                    <span>da 50 g</span>
+                  </div>
+                  <label class="select-label">
+                    Formato
+                    <select data-size>
+                      <option value="50">50 g</option>
+                      <option value="100">100 g</option>
+                    </select>
+                  </label>
+                  <div class="buy-row">
+                    <label>
+                      Qta
+                      <input data-qty type="number" min="1" max="24" value="1">
+                    </label>
+                    <button type="button" data-add>Aggiungi</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product="Polline" data-category="Polline" data-price-min="6.50" data-price-125="6.50" data-price-250="12.00">
+                <figure class="product-media" style="--focus: 88%;">
+                  <img src="home-sephora-wide.png" alt="Polline">
+                </figure>
+                <div class="product-info">
+                  <p class="product-kicker">Naturale</p>
+                  <h3>Polline</h3>
+                  <p>Granuli dorati, gusto fiorito.</p>
+                  <div class="price-row">
+                    <strong data-price-display>EUR 6,50</strong>
+                    <span>da 125 g</span>
+                  </div>
+                  <label class="select-label">
+                    Formato
+                    <select data-size>
+                      <option value="125">125 g</option>
+                      <option value="250">250 g</option>
+                    </select>
+                  </label>
+                  <div class="buy-row">
+                    <label>
+                      Qta
+                      <input data-qty type="number" min="1" max="24" value="1">
+                    </label>
+                    <button type="button" data-add>Aggiungi</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product="Pappa Reale Biologica Italiana Fresca" data-category="Pappa reale" data-price-min="24.00" data-price-10="24.00">
+                <figure class="product-media" style="--focus: 12%;">
+                  <img src="home-sephora-wide.png" alt="Immagine provvisoria per Pappa Reale Biologica Italiana Fresca">
+                </figure>
+                <div class="product-info">
+                  <p class="product-kicker">Integratori dell'alveare</p>
+                  <h3>Pappa Reale Biologica Italiana Fresca</h3>
+                  <p>Prodotto dimostrativo: descrizione e disponibilita saranno aggiornate con la linea definitiva.</p>
+                  <div class="price-row">
+                    <strong data-price-display>EUR 24,00</strong>
+                    <span>da 10 g</span>
+                  </div>
+                  <label class="select-label">
+                    Formato
+                    <select data-size>
+                      <option value="10">10 g</option>
+                    </select>
+                  </label>
+                  <div class="buy-row">
+                    <label>
+                      Qta
+                      <input data-qty type="number" min="1" max="24" value="1">
+                    </label>
+                    <button type="button" data-add>Aggiungi</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product="Miele in Favo di Acacia" data-category="Miele in favo" data-price-min="10.00" data-price-200="10.00" data-price-400="18.00">
+                <figure class="product-media">
+                  <img src="apiary-story-placeholder.png" alt="Miele in favo di Acacia">
+                </figure>
+                <div class="product-info">
+                  <p class="product-kicker">Miele in favo</p>
+                  <h3>Miele in Favo di Acacia</h3>
+                  <p>Prodotto dimostrativo: formati e caratteristiche saranno confermati con la linea definitiva.</p>
+                  <div class="price-row">
+                    <strong data-price-display>EUR 10,00</strong>
+                    <span>da 200 g</span>
+                  </div>
+                  <label class="select-label">
+                    Formato
+                    <select data-size>
+                      <option value="200">200 g</option>
+                      <option value="400">400 g</option>
+                    </select>
+                  </label>
+                  <div class="buy-row">
+                    <label>
+                      Qta
+                      <input data-qty type="number" min="1" max="24" value="1">
+                    </label>
+                    <button type="button" data-add>Aggiungi</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product="Propoli Junior" data-category="Propoli" data-price-min="12.00" data-price-20="12.00">
+                <figure class="product-media" style="--focus: 75%;">
+                  <img src="home-sephora-wide.png" alt="Immagine provvisoria per Propoli Junior">
+                </figure>
+                <div class="product-info">
+                  <p class="product-kicker">Integratori dell'alveare</p>
+                  <h3>Propoli Junior</h3>
+                  <p>Prodotto dimostrativo: composizione, eta consigliata e disponibilita saranno definite in seguito.</p>
+                  <div class="price-row">
+                    <strong data-price-display>EUR 12,00</strong>
+                    <span>da 20 ml</span>
+                  </div>
+                  <label class="select-label">
+                    Formato
+                    <select data-size>
+                      <option value="20">20 ml</option>
+                    </select>
+                  </label>
+                  <div class="buy-row">
+                    <label>
+                      Qta
+                      <input data-qty type="number" min="1" max="24" value="1">
+                    </label>
+                    <button type="button" data-add>Aggiungi</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product-card" data-product="Propoli Spray" data-category="Propoli" data-price-min="12.00" data-price-20="12.00">
+                <figure class="product-media" style="--focus: 78%;">
+                  <img src="home-sephora-wide.png" alt="Immagine provvisoria per Propoli Spray">
+                </figure>
+                <div class="product-info">
+                  <p class="product-kicker">Integratori dell'alveare</p>
+                  <h3>Propoli Spray</h3>
+                  <p>Prodotto dimostrativo: composizione, modalita d'uso e disponibilita saranno definite in seguito.</p>
+                  <div class="price-row">
+                    <strong data-price-display>EUR 12,00</strong>
+                    <span>da 20 ml</span>
+                  </div>
+                  <label class="select-label">
+                    Formato
+                    <select data-size>
+                      <option value="20">20 ml</option>
+                    </select>
+                  </label>
+                  <div class="buy-row">
+                    <label>
+                      Qta
+                      <input data-qty type="number" min="1" max="24" value="1">
+                    </label>
+                    <button type="button" data-add>Aggiungi</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contatti">
+        <div class="contact-copy">
+          <p class="eyebrow">Assistenza</p>
+          <h2>Hai una domanda?</h2>
+          <p>
+            Per informazioni su prodotti, disponibilita o richieste particolari,
+            scrivici: ti risponderemo appena possibile.
+          </p>
+        </div>
+        <form class="contact-form" action="mailto:info@leapidisephora.it" method="post" enctype="text/plain">
+          <label>
+            Nome
+            <input type="text" name="nome" autocomplete="name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>
+            Messaggio
+            <textarea name="messaggio" rows="6" required></textarea>
+          </label>
+          <button type="submit">Invia messaggio</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img src="logo-sephora.png" alt="Le Api di Sephora">
+        <p>Miele artigianale della Garfagnana</p>
+      </div>
+      <div class="footer-actions">
+        <nav class="footer-nav" aria-label="Navigazione a fondo pagina">
+          <a href="index.html#home">Home</a>
+          <a href="index.html#storia">Storia</a>
+          <a href="#contatti">Contatti</a>
+        </nav>
+        <div class="footer-socials" aria-label="Social">
+          <a class="social-link" href="https://www.instagram.com/leapidisephora/" target="_blank" rel="noopener noreferrer" aria-label="Segui Le Api di Sephora su Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js" defer></script>
+  </body>
+</html>
+
