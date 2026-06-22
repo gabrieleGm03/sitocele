@@ -83,58 +83,123 @@
         </figure>
       </section>
 
-      <section class="shop-paths" aria-labelledby="shop-paths-title">
-        <div class="section-intro">
-          <p class="eyebrow">La bottega</p>
-          <h2 id="shop-paths-title">Scegli da dove iniziare.</h2>
+      <section class="featured-section" aria-labelledby="featured-title">
+        <div class="featured-heading">
+          <div class="featured-title">
+            <p class="eyebrow">In evidenza</p>
+            <h2 id="featured-title">Scopri il miele.<br><span>Trova il tuo preferito.</span></h2>
+          </div>
+          <div class="featured-side">
+            <p class="featured-intro">Una piccola selezione per conoscere i profumi della Garfagnana e i prodotti che nascono dall'alveare.</p>
+          </div>
         </div>
-        <div class="shop-paths-grid">
-          <a href="shop.html?categoria=Miele">
-            <span>01</span>
-            <h3>I mieli</h3>
-            <p>Scopri le diverse fioriture e i formati disponibili.</p>
-            <strong>Esplora</strong>
+        <div class="featured-toolbar">
+          <p class="featured-note">Tutti i prodotti della bottega, da esplorare con calma.</p>
+          <div class="carousel-controls" aria-label="Scorri i prodotti in evidenza">
+            <button type="button" id="featuredPrevious" aria-controls="featuredTrack" aria-label="Prodotti precedenti" title="Prodotti precedenti">â†</button>
+            <button type="button" id="featuredNext" aria-controls="featuredTrack" aria-label="Prodotti successivi" title="Prodotti successivi">â†’</button>
+          </div>
+        </div>
+        <div class="featured-track" id="featuredTrack" tabindex="0">
+          <a class="featured-product" href="shop.html?categoria=Miele">
+            <figure class="featured-media"><img src="home-sephora-wide.png" alt="Miele di Castagno" loading="lazy" decoding="async" style="--product-position: 18% 62%;"></figure>
+            <span class="featured-copy">
+              <small>Miele</small>
+              <strong>Castagno</strong>
+              <em>Da 7,00 EUR</em>
+            </span>
           </a>
-          <a href="shop.html?categoria=Alveare">
-            <span>02</span>
-            <h3>Prodotti dell'alveare</h3>
-            <p>Propoli, polline e altre proposte della bottega.</p>
-            <strong>Esplora</strong>
+          <a class="featured-product" href="shop.html?categoria=Miele">
+            <figure class="featured-media"><img src="home-sephora-wide.png" alt="Miele di Acacia" loading="lazy" decoding="async" style="--product-position: 38% 62%;"></figure>
+            <span class="featured-copy">
+              <small>Miele</small>
+              <strong>Acacia</strong>
+              <em>Da 6,50 EUR</em>
+            </span>
           </a>
-          <a href="shop.html">
-            <span>03</span>
-            <h3>Tutta la bottega</h3>
-            <p>Consulta l'intera selezione e prepara il tuo carrello.</p>
-            <strong>Vai allo shop</strong>
+          <a class="featured-product" href="shop.html?categoria=Miele">
+            <figure class="featured-media"><img src="home-sephora-wide.png" alt="Miele Millefiori" loading="lazy" decoding="async" style="--product-position: 56% 62%;"></figure>
+            <span class="featured-copy">
+              <small>Miele</small>
+              <strong>Millefiori</strong>
+              <em>Da 6,00 EUR</em>
+            </span>
+          </a>
+          <a class="featured-product" href="shop.html?categoria=Alveare">
+            <figure class="featured-media"><img src="apiary-story-placeholder.png" alt="Prodotti dell'alveare" loading="lazy" decoding="async"></figure>
+            <span class="featured-copy">
+              <small>Dall'alveare</small>
+              <strong>Propoli</strong>
+              <em>Da 5,50 EUR</em>
+            </span>
+          </a>
+          <a class="featured-product" href="shop.html?categoria=Polline">
+            <figure class="featured-media"><img src="home-sephora-wide.png" alt="Polline" loading="lazy" decoding="async" style="--product-position: 88% 62%;"></figure>
+            <span class="featured-copy">
+              <small>Dall'alveare</small>
+              <strong>Polline</strong>
+              <em>Da 6,50 EUR</em>
+            </span>
+          </a>
+          <a class="featured-product" href="shop.html?categoria=Pappa%20reale">
+            <figure class="featured-media"><img src="home-sephora-wide.png" alt="Pappa reale biologica italiana fresca" loading="lazy" decoding="async" style="--product-position: 12% 62%;"></figure>
+            <span class="featured-copy">
+              <small>Dall'alveare</small>
+              <strong>Pappa reale fresca</strong>
+              <em>24,00 EUR</em>
+            </span>
+          </a>
+          <a class="featured-product" href="shop.html?categoria=Miele%20in%20favo">
+            <figure class="featured-media"><img src="apiary-story-placeholder.png" alt="Miele in favo di acacia" loading="lazy" decoding="async"></figure>
+            <span class="featured-copy">
+              <small>Miele in favo</small>
+              <strong>Acacia</strong>
+              <em>Da 10,00 EUR</em>
+            </span>
+          </a>
+          <a class="featured-product" href="shop.html?categoria=Propoli">
+            <figure class="featured-media"><img src="home-sephora-wide.png" alt="Propoli Junior" loading="lazy" decoding="async" style="--product-position: 75% 62%;"></figure>
+            <span class="featured-copy">
+              <small>Dall'alveare</small>
+              <strong>Propoli Junior</strong>
+              <em>12,00 EUR</em>
+            </span>
+          </a>
+          <a class="featured-product" href="shop.html?categoria=Propoli">
+            <figure class="featured-media"><img src="home-sephora-wide.png" alt="Propoli Spray" loading="lazy" decoding="async" style="--product-position: 78% 62%;"></figure>
+            <span class="featured-copy">
+              <small>Dall'alveare</small>
+              <strong>Propoli Spray</strong>
+              <em>12,00 EUR</em>
+            </span>
           </a>
         </div>
+        <a class="featured-all-link" href="shop.html">Vedi tutto lo shop</a>
       </section>
 
-      <section class="order-steps" aria-labelledby="order-steps-title">
-        <div class="section-intro">
-          <p class="eyebrow">Ordina con calma</p>
-          <h2 id="order-steps-title">Una bottega online fatta per scegliere bene.</h2>
+      <section class="faq-section" aria-labelledby="faq-title">
+        <div class="faq-content">
+          <p class="eyebrow">Hai una domanda?</p>
+          <h2 id="faq-title">Domande <span>frequenti.</span></h2>
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>Come funziona la richiesta d'ordine?</summary>
+              <p>Scegli i prodotti nello shop, aggiungili al carrello e completa la richiesta. Ti confermeremo disponibilita, consegna e totale finale prima dell'ordine.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Come scelgo il formato giusto?</summary>
+              <p>Ogni prodotto nello shop mostra i formati disponibili. Se hai dubbi sull'uso o sulla quantita, puoi scriverci prima di ordinare.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Posso chiedere informazioni prima di acquistare?</summary>
+              <p>Certo. Per disponibilita, prodotti e modalita di consegna puoi contattarci direttamente: ti rispondiamo prima di procedere con l'ordine.</p>
+            </details>
+          </div>
         </div>
-        <ol class="process-grid">
-          <li>
-            <span>01</span>
-            <h3>Esplora</h3>
-            <p>Entra nella bottega e scegli i prodotti che ti interessano.</p>
-          </li>
-          <li>
-            <span>02</span>
-            <h3>Prepara l'ordine</h3>
-            <p>Aggiungi la selezione al carrello e completa la richiesta nel checkout.</p>
-          </li>
-          <li>
-            <span>03</span>
-            <h3>Ricevi conferma</h3>
-            <p>Disponibilita, consegna e costo finale vengono confermati prima dell'ordine.</p>
-          </li>
-        </ol>
-        <div class="order-steps-action">
-          <a class="primary-link" href="shop.html">Scopri i prodotti</a>
-        </div>
+        <figure class="faq-visual">
+          <!-- Immagine temporanea: sostituire con una foto reale dell'apiario. -->
+          <img src="apiary-story-placeholder.png" alt="Telaio di miele dell'apiario" loading="lazy" decoding="async">
+        </figure>
       </section>
 
       <section class="help-band" id="contatti" aria-labelledby="help-title">

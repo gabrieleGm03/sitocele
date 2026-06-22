@@ -31,6 +31,9 @@ const categoryButtons = Array.from(document.querySelectorAll("[data-filter-categ
 const sortProducts = document.querySelector("#sortProducts");
 const resultCount = document.querySelector("#resultCount");
 const filterButton = document.querySelector(".filter-button");
+const featuredTrack = document.querySelector("#featuredTrack");
+const featuredPrevious = document.querySelector("#featuredPrevious");
+const featuredNext = document.querySelector("#featuredNext");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let activeCategory = "all";
 
@@ -429,7 +432,41 @@ checkoutForm?.addEventListener("submit", (event) => {
   window.location.href = mailto;
 });
 
+function scrollFeaturedProducts(direction) {
+  if (!featuredTrack) {
+    return;
+  }
+
+  const firstProduct = featuredTrack.querySelector(".featured-product");
+  const trackGap = Number.parseFloat(window.getComputedStyle(featuredTrack).columnGap) || 0;
+  const scrollAmount = firstProduct
+    ? firstProduct.getBoundingClientRect().width + trackGap
+    : featuredTrack.clientWidth * 0.78;
+
+  featuredTrack.scrollBy({
+    left: scrollAmount * direction,
+    behavior: reduceMotion ? "auto" : "smooth",
+  });
+}
+
+function updateFeaturedControls() {
+  if (!featuredTrack) {
+    return;
+  }
+
+  const maxScroll = featuredTrack.scrollWidth - featuredTrack.clientWidth;
+  const scrollPosition = featuredTrack.scrollLeft;
+  featuredPrevious?.toggleAttribute("disabled", scrollPosition <= 2);
+  featuredNext?.toggleAttribute("disabled", maxScroll <= 2 || scrollPosition >= maxScroll - 2);
+}
+
+featuredPrevious?.addEventListener("click", () => scrollFeaturedProducts(-1));
+featuredNext?.addEventListener("click", () => scrollFeaturedProducts(1));
+featuredTrack?.addEventListener("scroll", updateFeaturedControls, { passive: true });
+window.addEventListener("resize", updateFeaturedControls);
+
 setupProductReveal();
 updateCatalog();
 updateShippingFields();
 renderCart();
+updateFeaturedControls();
