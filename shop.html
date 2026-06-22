@@ -45,6 +45,7 @@
               <h2>Prodotti della bottega</h2>
               <button type="button" data-filter-category="all" class="is-active">Tutti i prodotti</button>
               <button type="button" data-filter-category="Miele">Miele</button>
+              <button type="button" data-filter-category="Alveare">Prodotti dell'alveare</button>
               <button type="button" data-filter-category="Miele in favo">Miele in favo</button>
               <button type="button" data-filter-category="Propoli">Propoli</button>
               <button type="button" data-filter-category="Pappa reale">Pappa reale</button>
@@ -88,7 +89,7 @@
               <!-- Prodotti dimostrativi: sostituire immagini, formati e prezzi con i dati definitivi prima del lancio. -->
               <article class="product-card featured" data-product="Miele di Castagno" data-category="Miele" data-price-min="7.00" data-price-250="7.00" data-price-500="12.50">
                 <figure class="product-media" style="--focus: 18%;">
-                  <img src="home-sephora-wide.png" alt="Miele di Castagno">
+                  <img src="home-sephora-wide.png" alt="Miele di Castagno" loading="lazy" decoding="async">
                 </figure>
                 <div class="product-info">
                   <p class="product-kicker">Intenso</p>
@@ -117,7 +118,7 @@
 
               <article class="product-card" data-product="Miele di Acacia" data-category="Miele" data-price-min="6.50" data-price-250="6.50" data-price-500="11.50">
                 <figure class="product-media" style="--focus: 38%;">
-                  <img src="home-sephora-wide.png" alt="Miele di Acacia">
+                  <img src="home-sephora-wide.png" alt="Miele di Acacia" loading="lazy" decoding="async">
                 </figure>
                 <div class="product-info">
                   <p class="product-kicker">Delicato</p>
@@ -146,7 +147,7 @@
 
               <article class="product-card" data-product="Miele Millefiori" data-category="Miele" data-price-min="6.00" data-price-250="6.00" data-price-500="10.50">
                 <figure class="product-media" style="--focus: 55%;">
-                  <img src="home-sephora-wide.png" alt="Miele Millefiori">
+                  <img src="home-sephora-wide.png" alt="Miele Millefiori" loading="lazy" decoding="async">
                 </figure>
                 <div class="product-info">
                   <p class="product-kicker">Profumato</p>
@@ -175,7 +176,7 @@
 
               <article class="product-card" data-product="Propoli" data-category="Propoli" data-price-min="5.50" data-price-50="5.50" data-price-100="9.00">
                 <figure class="product-media" style="--focus: 72%;">
-                  <img src="home-sephora-wide.png" alt="Propoli">
+                  <img src="home-sephora-wide.png" alt="Propoli" loading="lazy" decoding="async">
                 </figure>
                 <div class="product-info">
                   <p class="product-kicker">Balsamica</p>
@@ -204,7 +205,7 @@
 
               <article class="product-card" data-product="Polline" data-category="Polline" data-price-min="6.50" data-price-125="6.50" data-price-250="12.00">
                 <figure class="product-media" style="--focus: 88%;">
-                  <img src="home-sephora-wide.png" alt="Polline">
+                  <img src="home-sephora-wide.png" alt="Polline" loading="lazy" decoding="async">
                 </figure>
                 <div class="product-info">
                   <p class="product-kicker">Naturale</p>
@@ -233,7 +234,7 @@
 
               <article class="product-card" data-product="Pappa Reale Biologica Italiana Fresca" data-category="Pappa reale" data-price-min="24.00" data-price-10="24.00">
                 <figure class="product-media" style="--focus: 12%;">
-                  <img src="home-sephora-wide.png" alt="Immagine provvisoria per Pappa Reale Biologica Italiana Fresca">
+                  <img src="home-sephora-wide.png" alt="Immagine provvisoria per Pappa Reale Biologica Italiana Fresca" loading="lazy" decoding="async">
                 </figure>
                 <div class="product-info">
                   <p class="product-kicker">Integratori dell'alveare</p>
@@ -261,7 +262,7 @@
 
               <article class="product-card" data-product="Miele in Favo di Acacia" data-category="Miele in favo" data-price-min="10.00" data-price-200="10.00" data-price-400="18.00">
                 <figure class="product-media">
-                  <img src="apiary-story-placeholder.png" alt="Miele in favo di Acacia">
+                  <img src="apiary-story-placeholder.png" alt="Miele in favo di Acacia" loading="lazy" decoding="async">
                 </figure>
                 <div class="product-info">
                   <p class="product-kicker">Miele in favo</p>
@@ -290,7 +291,7 @@
 
               <article class="product-card" data-product="Propoli Junior" data-category="Propoli" data-price-min="12.00" data-price-20="12.00">
                 <figure class="product-media" style="--focus: 75%;">
-                  <img src="home-sephora-wide.png" alt="Immagine provvisoria per Propoli Junior">
+                  <img src="home-sephora-wide.png" alt="Immagine provvisoria per Propoli Junior" loading="lazy" decoding="async">
                 </figure>
                 <div class="product-info">
                   <p class="product-kicker">Integratori dell'alveare</p>
@@ -318,7 +319,7 @@
 
               <article class="product-card" data-product="Propoli Spray" data-category="Propoli" data-price-min="12.00" data-price-20="12.00">
                 <figure class="product-media" style="--focus: 78%;">
-                  <img src="home-sephora-wide.png" alt="Immagine provvisoria per Propoli Spray">
+                  <img src="home-sephora-wide.png" alt="Immagine provvisoria per Propoli Spray" loading="lazy" decoding="async">
                 </figure>
                 <div class="product-info">
                   <p class="product-kicker">Integratori dell'alveare</p>
@@ -377,8 +378,11 @@
 
     <footer class="site-footer">
       <div class="footer-brand">
-        <img src="logo-sephora.png" alt="Le Api di Sephora">
-        <p>Miele artigianale della Garfagnana</p>
+        <img src="logo-sephora.png" alt="Le Api di Sephora" loading="lazy" decoding="async">
+        <div class="footer-brand-copy">
+          <p>Miele artigianale della Garfagnana</p>
+          <a href="mailto:info@leapidisephora.it">info@leapidisephora.it</a>
+        </div>
       </div>
       <div class="footer-actions">
         <nav class="footer-nav" aria-label="Navigazione a fondo pagina">

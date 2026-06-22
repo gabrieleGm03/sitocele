@@ -34,6 +34,14 @@ const filterButton = document.querySelector(".filter-button");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let activeCategory = "all";
 
+const categoryFromUrl = new URLSearchParams(window.location.search).get("categoria");
+if (categoryFromUrl && categoryButtons.some((button) => button.dataset.filterCategory === categoryFromUrl)) {
+  activeCategory = categoryFromUrl;
+  categoryButtons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.filterCategory === activeCategory);
+  });
+}
+
 function saveCart() {
   localStorage.setItem(cartKey, JSON.stringify(cart));
 }
@@ -227,7 +235,10 @@ function updateCatalog(revealVisible = false) {
   sortCatalogProducts();
 
   productCards.forEach((card) => {
-    const categoryMatches = activeCategory === "all" || card.dataset.category === activeCategory;
+    const hiveCategories = ["Miele in favo", "Propoli", "Pappa reale", "Polline"];
+    const categoryMatches = activeCategory === "all"
+      || card.dataset.category === activeCategory
+      || (activeCategory === "Alveare" && hiveCategories.includes(card.dataset.category));
     const searchableText = `${card.dataset.product} ${card.dataset.category} ${card.textContent}`.toLowerCase();
     const searchMatches = !query || searchableText.includes(query);
     const isVisible = categoryMatches && searchMatches;
