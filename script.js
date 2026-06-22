@@ -44,6 +44,10 @@ let drawerCheckout = null;
 let drawerClearButton = null;
 let cartDrawerCloseButton = null;
 let lastCartTrigger = null;
+let cartAddedNotice = null;
+let cartAddedName = null;
+let cartAddedMeta = null;
+let cartAddedTimer = 0;
 let activeCategory = "all";
 
 const categoryFromUrl = new URLSearchParams(window.location.search).get("categoria");
@@ -101,6 +105,33 @@ function closeCartDrawer() {
   lastCartTrigger?.focus();
 }
 
+function closeCartAddedNotice() {
+  if (!cartAddedNotice || cartAddedNotice.hidden) {
+    return;
+  }
+
+  window.clearTimeout(cartAddedTimer);
+  cartAddedNotice.classList.remove("is-visible");
+  window.setTimeout(() => {
+    if (!cartAddedNotice?.classList.contains("is-visible")) {
+      cartAddedNotice.hidden = true;
+    }
+  }, reduceMotion ? 0 : 180);
+}
+
+function showCartAddedNotice(name, format) {
+  if (!cartAddedNotice || !cartAddedName || !cartAddedMeta) {
+    return;
+  }
+
+  window.clearTimeout(cartAddedTimer);
+  cartAddedName.textContent = name;
+  cartAddedMeta.textContent = `${format} aggiunto al carrello`;
+  cartAddedNotice.hidden = false;
+  window.requestAnimationFrame(() => cartAddedNotice?.classList.add("is-visible"));
+  cartAddedTimer = window.setTimeout(closeCartAddedNotice, 4800);
+}
+
 function setupCartDrawer() {
   if (!headerCartAction || document.querySelector("#cartDrawer")) {
     return;
@@ -130,6 +161,16 @@ function setupCartDrawer() {
         </footer>
       </aside>
     </div>
+    <aside class="cart-added-notice" id="cartAddedNotice" aria-live="polite" aria-label="Prodotto aggiunto al carrello" hidden>
+      <button class="cart-added-close" type="button" aria-label="Chiudi avviso" title="Chiudi">x</button>
+      <p class="eyebrow">Aggiunto al carrello</p>
+      <strong id="cartAddedName"></strong>
+      <span id="cartAddedMeta"></span>
+      <div class="cart-added-actions">
+        <button class="cart-added-view" type="button">Vedi carrello</button>
+        <button class="cart-added-continue" type="button">Continua</button>
+      </div>
+    </aside>
   `);
 
   cartDrawer = document.querySelector("#cartDrawer");
@@ -139,9 +180,13 @@ function setupCartDrawer() {
   drawerCheckout = document.querySelector("#drawerCheckout");
   drawerClearButton = document.querySelector("#drawerClearButton");
   cartDrawerCloseButton = document.querySelector(".cart-drawer-close");
+  cartAddedNotice = document.querySelector("#cartAddedNotice");
+  cartAddedName = document.querySelector("#cartAddedName");
+  cartAddedMeta = document.querySelector("#cartAddedMeta");
 
   headerCartAction.addEventListener("click", (event) => {
     event.preventDefault();
+    closeCartAddedNotice();
     openCartDrawer();
   });
   document.querySelector(".cart-drawer-backdrop")?.addEventListener("click", closeCartDrawer);
@@ -156,8 +201,15 @@ function setupCartDrawer() {
     cart.splice(0, cart.length);
     renderCart();
   });
+  document.querySelector(".cart-added-close")?.addEventListener("click", closeCartAddedNotice);
+  document.querySelector(".cart-added-continue")?.addEventListener("click", closeCartAddedNotice);
+  document.querySelector(".cart-added-view")?.addEventListener("click", () => {
+    closeCartAddedNotice();
+    openCartDrawer();
+  });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
+      closeCartAddedNotice();
       closeCartDrawer();
     }
   });
@@ -428,6 +480,7 @@ productCards.forEach((card, index) => {
     qtyInput.value = 1;
     renderCart();
     setCartStatus(`${name} aggiunto al carrello.`);
+    showCartAddedNotice(name, format);
   });
 
   updatePrice(card);
