@@ -34,7 +34,16 @@ const filterButton = document.querySelector(".filter-button");
 const featuredTrack = document.querySelector("#featuredTrack");
 const featuredPrevious = document.querySelector("#featuredPrevious");
 const featuredNext = document.querySelector("#featuredNext");
+const headerCartAction = document.querySelector(".header-action");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let cartDrawer = null;
+let drawerCartEmpty = null;
+let drawerCartList = null;
+let drawerCartTotal = null;
+let drawerCheckout = null;
+let drawerClearButton = null;
+let cartDrawerCloseButton = null;
+let lastCartTrigger = null;
 let activeCategory = "all";
 
 const categoryFromUrl = new URLSearchParams(window.location.search).get("categoria");
@@ -63,6 +72,95 @@ function getItemFormat(item) {
   }
 
   return item.size ? `${item.size} g` : "Formato da confermare";
+}
+
+function openCartDrawer() {
+  if (!cartDrawer) {
+    return;
+  }
+
+  lastCartTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  cartDrawer.hidden = false;
+  window.requestAnimationFrame(() => cartDrawer?.classList.add("is-open"));
+  document.body.classList.add("cart-drawer-open");
+  cartDrawerCloseButton?.focus();
+}
+
+function closeCartDrawer() {
+  if (!cartDrawer || cartDrawer.hidden) {
+    return;
+  }
+
+  cartDrawer.classList.remove("is-open");
+  document.body.classList.remove("cart-drawer-open");
+  window.setTimeout(() => {
+    if (!cartDrawer?.classList.contains("is-open")) {
+      cartDrawer.hidden = true;
+    }
+  }, reduceMotion ? 0 : 220);
+  lastCartTrigger?.focus();
+}
+
+function setupCartDrawer() {
+  if (!headerCartAction || document.querySelector("#cartDrawer")) {
+    return;
+  }
+
+  document.body.insertAdjacentHTML("beforeend", `
+    <div class="cart-drawer" id="cartDrawer" hidden>
+      <button class="cart-drawer-backdrop" type="button" aria-label="Chiudi il carrello"></button>
+      <aside class="cart-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle" tabindex="-1">
+        <header class="cart-drawer-header">
+          <div>
+            <p class="eyebrow">Il tuo ordine</p>
+            <h2 id="cartDrawerTitle">Carrello</h2>
+          </div>
+          <button class="cart-drawer-close" type="button" aria-label="Chiudi il carrello" title="Chiudi">x</button>
+        </header>
+        <div class="cart-drawer-body">
+          <p class="cart-drawer-empty" id="drawerCartEmpty" aria-live="polite">Il carrello e vuoto.</p>
+          <div class="cart-drawer-list" id="drawerCartList" aria-live="polite"></div>
+        </div>
+        <footer class="cart-drawer-footer">
+          <div class="cart-drawer-total"><span>Totale prodotti</span><strong id="drawerCartTotal">EUR 0,00</strong></div>
+          <p>Disponibilita e consegna vengono confermate prima dell'ordine.</p>
+          <a class="drawer-checkout" id="drawerCheckout" href="checkout.html">Procedi al checkout</a>
+          <a class="drawer-continue" href="shop.html">Continua gli acquisti</a>
+          <button class="drawer-clear" id="drawerClearButton" type="button">Svuota carrello</button>
+        </footer>
+      </aside>
+    </div>
+  `);
+
+  cartDrawer = document.querySelector("#cartDrawer");
+  drawerCartEmpty = document.querySelector("#drawerCartEmpty");
+  drawerCartList = document.querySelector("#drawerCartList");
+  drawerCartTotal = document.querySelector("#drawerCartTotal");
+  drawerCheckout = document.querySelector("#drawerCheckout");
+  drawerClearButton = document.querySelector("#drawerClearButton");
+  cartDrawerCloseButton = document.querySelector(".cart-drawer-close");
+
+  headerCartAction.addEventListener("click", (event) => {
+    event.preventDefault();
+    openCartDrawer();
+  });
+  document.querySelector(".cart-drawer-backdrop")?.addEventListener("click", closeCartDrawer);
+  cartDrawerCloseButton?.addEventListener("click", closeCartDrawer);
+  document.querySelector(".drawer-continue")?.addEventListener("click", closeCartDrawer);
+  drawerCheckout?.addEventListener("click", (event) => {
+    if (!cart.length) {
+      event.preventDefault();
+    }
+  });
+  drawerClearButton?.addEventListener("click", () => {
+    cart.splice(0, cart.length);
+    renderCart();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeCartDrawer();
+    }
+  });
 }
 
 function buildOrderText() {
@@ -112,6 +210,42 @@ function renderCheckout() {
   });
 }
 
+function renderCartDrawer() {
+  if (!drawerCartList || !drawerCartEmpty || !drawerCartTotal || !drawerCheckout || !drawerClearButton) {
+    return;
+  }
+
+  drawerCartList.innerHTML = "";
+  drawerCartEmpty.hidden = cart.length > 0;
+  drawerCartTotal.textContent = money.format(getCartTotal());
+  drawerCheckout.classList.toggle("is-disabled", cart.length === 0);
+  drawerCheckout.setAttribute("aria-disabled", String(cart.length === 0));
+  drawerClearButton.disabled = cart.length === 0;
+
+  cart.forEach((item, index) => {
+    const row = document.createElement("article");
+    row.className = "drawer-cart-item";
+    row.innerHTML = `
+      <div class="drawer-cart-item-copy">
+        <strong>${item.name}</strong>
+        <span>${getItemFormat(item)} - ${money.format(item.price)} cad.</span>
+      </div>
+      <div class="drawer-cart-item-actions">
+        <div>
+          <button type="button" data-decrease="${index}" aria-label="Diminuisci quantita">-</button>
+          <span>Quantita: ${item.qty}</span>
+          <button type="button" data-increase="${index}" aria-label="Aumenta quantita">+</button>
+        </div>
+        <div>
+          <strong>${money.format(getLineTotal(item))}</strong>
+          <button class="drawer-remove" type="button" data-remove="${index}" aria-label="Rimuovi ${item.name}">Rimuovi</button>
+        </div>
+      </div>
+    `;
+    drawerCartList.appendChild(row);
+  });
+}
+
 function renderCart() {
   const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
   const total = getCartTotal();
@@ -121,6 +255,7 @@ function renderCart() {
   }
 
   renderCheckout();
+  renderCartDrawer();
 
   if (!cartList || !cartEmpty || !cartTotal || !checkoutLink || !copyOrderButton || !clearCartButton) {
     saveCart();
@@ -293,7 +428,7 @@ productCards.forEach((card, index) => {
     qtyInput.value = 1;
     renderCart();
     setCartStatus(`${name} aggiunto al carrello.`);
-    document.querySelector("#carrello").scrollIntoView({ behavior: "smooth", block: "start" });
+    openCartDrawer();
   });
 
   updatePrice(card);
@@ -311,7 +446,7 @@ categoryButtons.forEach((button) => {
   });
 });
 
-cartList?.addEventListener("click", (event) => {
+function handleCartItemAction(event) {
   const button = event.target.closest("button");
   if (!button) {
     return;
@@ -335,7 +470,10 @@ cartList?.addEventListener("click", (event) => {
   }
 
   renderCart();
-});
+}
+
+cartList?.addEventListener("click", handleCartItemAction);
+drawerCartList?.addEventListener("click", handleCartItemAction);
 
 copyOrderButton?.addEventListener("click", async () => {
   const text = buildOrderText();
@@ -459,6 +597,9 @@ function updateFeaturedControls() {
   featuredPrevious?.toggleAttribute("disabled", scrollPosition <= 2);
   featuredNext?.toggleAttribute("disabled", maxScroll <= 2 || scrollPosition >= maxScroll - 2);
 }
+
+setupCartDrawer();
+drawerCartList?.addEventListener("click", handleCartItemAction);
 
 featuredPrevious?.addEventListener("click", () => scrollFeaturedProducts(-1));
 featuredNext?.addEventListener("click", () => scrollFeaturedProducts(1));

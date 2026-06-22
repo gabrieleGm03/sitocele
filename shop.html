@@ -15,7 +15,7 @@
       rel="stylesheet"
     >
     <link rel="icon" type="image/png" href="logo-sephora.png">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260622-3">
   </head>
   <body>
     <header class="site-header">
@@ -28,7 +28,7 @@
         <a href="index.html#storia">Storia</a>
         <a href="#contatti">Contatti</a>
       </nav>
-      <a class="header-action" href="#carrello">Carrello (<span id="cartCount">0</span>)</a>
+      <a class="header-action" href="checkout.html">Carrello (<span id="cartCount">0</span>)</a>
     </header>
 
     <main>
@@ -51,23 +51,6 @@
               <button type="button" data-filter-category="Pappa reale">Pappa reale</button>
               <button type="button" data-filter-category="Polline">Polline</button>
             </div>
-
-            <aside class="cart-panel" id="carrello" aria-labelledby="cart-title">
-              <div class="cart-heading">
-                <p class="eyebrow">Il tuo ordine</p>
-                <h2 id="cart-title">Carrello</h2>
-              </div>
-              <div class="cart-empty" id="cartEmpty">Nessun prodotto nel carrello.</div>
-              <div class="cart-list" id="cartList" aria-live="polite"></div>
-              <div class="cart-total">
-                <span>Totale</span>
-                <strong id="cartTotal">EUR 0,00</strong>
-              </div>
-              <a class="checkout-button disabled" id="checkoutLink" href="checkout.html" aria-disabled="true">Vai al checkout</a>
-              <button class="copy-order-button" id="copyOrderButton" type="button">Copia ordine</button>
-              <button class="clear-cart-button" id="clearCartButton" type="button">Svuota carrello</button>
-              <p class="cart-status" id="cartStatus" aria-live="polite"></p>
-            </aside>
           </aside>
 
           <div class="shop-main">
