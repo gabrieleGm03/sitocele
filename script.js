@@ -428,7 +428,6 @@ productCards.forEach((card, index) => {
     qtyInput.value = 1;
     renderCart();
     setCartStatus(`${name} aggiunto al carrello.`);
-    openCartDrawer();
   });
 
   updatePrice(card);
