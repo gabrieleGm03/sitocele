@@ -1118,8 +1118,8 @@ body.enhanced-motion .product-card.is-visible {
   width: min(1320px, calc(100% - 48px));
   margin: 0 auto;
   padding: clamp(72px, 10vw, 132px) 0;
-  background: #f5e7e6;
-  box-shadow: 0 0 0 100vmax #f5e7e6;
+  background: #f3dfe2;
+  box-shadow: 0 0 0 100vmax #f3dfe2;
   clip-path: inset(0 -100vmax);
 }
 
@@ -1197,8 +1197,8 @@ body.enhanced-motion .product-card.is-visible {
 .faq-visual {
   position: relative;
   z-index: 0;
-  aspect-ratio: 4 / 5;
-  min-height: clamp(420px, 42vw, 590px);
+  height: clamp(440px, 42vw, 590px);
+  min-height: 0;
   margin: 0;
 }
 
@@ -2017,7 +2017,7 @@ body.enhanced-motion .product-card.is-visible {
   }
 
   .faq-visual {
-    min-height: 520px;
+    height: 520px;
     max-width: 440px;
   }
 }
@@ -2063,7 +2063,7 @@ body.enhanced-motion .product-card.is-visible {
   }
 
   .faq-visual {
-    min-height: 320px;
+    height: 360px;
   }
 }
 
